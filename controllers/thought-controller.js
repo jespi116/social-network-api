@@ -101,17 +101,8 @@ const thoughtController = {
             { $pull: { reactions: { reactionId: params.reactionId } } },
             { new: true }
         )
-            .then(dbThought => {
-                if (!dbThought) {
-                    res.status(404).json({ message: 'No Thought found with this id!' });
-                    return;
-                }
-                res.json(dbThought);
-            })
-            .catch((err) => {
-                console.log(err);
-                res.status(500).json(err);
-            });
+        .then(dbPizzaData => res.json(dbPizzaData))
+        .catch(err => res.json(err));
     }
 };
 
